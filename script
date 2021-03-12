@@ -1,0 +1,33 @@
+async function fetchAndApply(t) {
+    var a = new URL(t.url),
+        e = a.pathname;
+    a.protocol;
+    switch (e) {
+        case "/":
+            return Response.redirect("https://www.semo.dk/", 301);
+            break;
+        case "/flink":
+            return Response.redirect("https://www.semo.dk/ja", 301);
+            break;
+        case "/rar":
+            return Response.redirect("https://www.semo.dk/bestemt", 301);
+            break;
+        case "/flot-fyr":
+            return Response.redirect("https://www.semo.dk/helt-sikkert", 301);
+            break;
+        case "/charmerende":
+            return Response.redirect("https://www.semo.dk/pifte-lyd", 301);
+            break;
+        case "/sød":
+            return Response.redirect("https://www.semo.dk/ja-da", 301);
+            break;
+        case "/selvglad":
+            return Response.redirect("https://www.dr.dk/hmmmm", 301);
+            break;
+        default:
+            return await fetch(t);
+    }
+}
+addEventListener("fetch", (t) => {
+    t.respondWith(fetchAndApply(t.request));
+});
